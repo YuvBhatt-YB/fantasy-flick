@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FantasyFlick</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+    <script src="https://kit.fontawesome.com/91953b8a7b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class=" bg-[#F0FFF0]">
+        <div class="sticky top-0 z-50  w-full  py-4 px-2 sm:px-4  ">
+            <div class="  bg-black border-[#F0FFF0] border-1 rounded-lg px-2 sm:px-8  flex items-center justify-center sm:justify-between ">
+                <div class="hidden sm:block">
+                    <h1 class=" text-[5rem] font-screamerBlack  text-[#F0FFF0] leading-none">F.</h1>
+                </div>
+                <div class="flex gap-3 font-favori">
+                    <button class=" hover:bg-[#F0FFF0] hover:text-black text-[#DFDFF2] py-2 px-5 rounded-lg  cursor-pointer flex items-center justify-center gap-1"><a href="{{url_for('Contests.index')}}">Your Contests</a><i class="fa-solid fa-angles-right"></i></button>
+                    <button class=" hover:bg-[#F0FFF0] hover:text-black text-[#DFDFF2] py-2 px-5 rounded-lg cursor-pointer flex items-center justify-center gap-1"><a href="{{url_for('UserProfile.index')}}">Profile</a><i class="fa-solid fa-angles-right"></i></button>
+                    <button class=" hover:bg-[#F0FFF0] hover:text-black text-[#DFDFF2] py-2 px-5 rounded-lg  cursor-pointer flex items-center justify-center gap-1"><a href="{{url_for('Auth.logout')}}">Logout</a><i class="fa-solid fa-angles-right"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class=" w-full py-4 px-2 sm:px-12 ">
+            <p class="text-5xl  sm:text-7xl font-screamerBlack font-bold">Welcome {{current_user.username}}</p>
+        </div>
+        <div class="  w-full  mx-auto py-4 px-4 sm:px-12 space-y-4 sm:space-y-8 bg-cover bg-no-repeat bg-center" style="background-image: url('{{ url_for('static', filename='images/hero.webp') }}');">
+            {% for match in matches %}
+                <div class=" bg-[#F0FFF0] rounded-lg">
+                    <div class=" p-4 sm:p-8 w-full sm:flex  sm:items-center justify-between">
+                        <div class=" flex flex-col items-center justify-center sm:block">
+                            <div>
+                            <h2 class=" text-3xl font-favorit font-semibold text-center sm:text-start">{{match.series_name}}</h2>
+                            </div>
+                            <div class=" flex mt-2 gap-6">
+                                <div>
+                                    <span class=" text-6xl text-center sm:text-start font-screamerBlack">{{match.team1_short}}</span>
+                                    <p class="text-xl font-favorit">{{match.team1}}</p>
+                                </div>
+                                <div>
+                                    <span class=" text-6xl text-center sm:text-start font-screamerBlack">{{match.team2_short}}</span>
+                                    <p class="text-xl font-favorit">{{match.team2}}</p>
+                                </div>
+                            </div>
+                            <div class=" mt-2 font-favorit">
+                                <p class="text-xl">{{match.start_time}}</p>
+                            </div>
+                        </div>
+                        <div class=" w-full mt-4 sm:w-auto flex flex-col gap-4 font-favorit font-semibold text-xl sm:mt-0">
+                            <button class=" bg-[#5724FF] text-white rounded-md px-6 py-2 cursor-pointer hover:shadow-[5px_5px_0px_0px_rgba(0,0,0)]"><a href="{{url_for('UserDashboard.match',match_id=match.match_id)}}">Enter Contest</a></button>
+                            {% if match.fantasy_team|length != 0 %}
+                                <button class=" bg-[#DFDFF2] text-black  rounded-md px-6 py-2 cursor-pointer hover:shadow-[5px_5px_0px_0px_rgba(0,0,0)]"><a href="{{url_for('LeaderBoard.index',match_id=match.match_id)}}">Leaderboard</a></button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

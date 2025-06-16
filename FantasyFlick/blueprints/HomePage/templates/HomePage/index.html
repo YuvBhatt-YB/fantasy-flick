@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FantasyFlick</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+</head>
+<body class=" h-screen w-screen  relative overflow-hidden">
+    <div class="  absolute inset-0 -z-10 w-full h-full">
+        <video src="{{url_for('static',filename='videos/hero.mp4')}}" class="w-full h-full object-cover"  autoplay loop muted></video>
+    </div>
+    <div class=" z-50 relative h-full ">
+        <div class="py-2 px-2 sm:px-6 sm:py-4 flex">
+            <div >
+                <h1 class=" text-[5rem] font-screamerBlack text-white leading-none">F.</h1>
+            </div>
+        </div>
+        <div class=" absolute top-0 left-0 translate-y-1/2 sm:relative sm:translate-none">
+            <div >
+            <div class="  px-2 py-4 sm:px-6 sm:py-12">
+            <div>
+                <h1 class=" text-[8rem] sm:text-[10rem] md:text-[15rem] font-screamerBlack text-white leading-none">FANTASY</h1>
+                <h1 class=" text-[8rem] font-screamerBlack text-white sm:hidden leading-none">FLICK</h1>
+                <div class="font-favorit flex flex-col gap-3 text-white">
+                <div class=" text-xl md:text-2xl">
+                    <p> Your Ultimate Fantasy Sports Arena</p>
+                    <p>Build Your Dream Team – Pick Real-Life Players</p>
+                </div>
+                <div class="flex gap-3 font-favorit font-bold mt-2">
+                   <button class=" bg-[#F1FF7E] text-black py-4 px-10 rounded-full border-2 border-black cursor-pointer"><a href="{{url_for('Auth.signup')}}" >Sign Up</a></button>
+                    <button class=" bg-[#DFDFF2] text-black py-4 px-10 rounded-full border-2 border-black cursor-pointer">
+                        <a href="{{url_for('Auth.login')}}">Log In</a>
+                    </button>
+                </div>
+            </div>
+            </div>
+            </div>
+            <div class=" flex md:justify-end px-2 sm:px-6">
+            
+            <div>
+                <h1 class="hidden sm:block text-[6rem] sm:text-[10rem] md:text-[15rem] font-screamerBlack text-white leading-none">FLICK</h1>
+            </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    
+
+</body>
+</html>

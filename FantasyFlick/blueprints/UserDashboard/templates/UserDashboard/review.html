@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FantasyFlick</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+    <script src="https://kit.fontawesome.com/91953b8a7b.js" crossorigin="anonymous"></script>
+</head>
+<body class="  w-full relative bg-[#F0FFF0]">
+    <a href="{{url_for('UserDashboard.match',match_id=match_id)}}"><i class="fa-regular fa-circle-left text-4xl sm:ml-6  my-4 ml-4"></i></a>
+    <div class=" w-full text-center text-5xl  font-screamerBlack px-4  md:px-16 py-4 ">
+        <p>Lineup Review</p>
+    </div>
+    <div class=" w-full flex  items-center justify-center gap-2  py-4">
+            <p class=" text-4xl font-favorit">Team Name :</p>
+            <div>
+                <p class="py-2 px-2 text-4xl font-favorit">{{team_name}}</p>
+            </div>
+    </div>
+    <div class=" w-full  py-4 flex max-sm:flex-col items-center justify-center gap-2">
+            <div class=" flex  gap-3  items-center justify-center">
+                <p class=" font-favorit text-2xl ">Captain :</p>
+                <p  class="  py-2 px-2  text-2xl font-semibold">
+                    {{captain}}
+                </p>
+            </div>
+            <div class=" flex  gap-2  items-center justify-center">
+                <label class=" font-favorit text-2xl ">Vice Captain :</label>
+                <p  class="  py-2 px-2  text-2xl font-semibold">
+                    {{vice_captain}}
+                </p>
+            </div>
+    </div>
+    <div class=" border-t-2  w-full bg-cover bg-no-repeat bg-center" style="background-image: url('{{ url_for('static', filename='images/hero.webp') }}');">
+            <div class=" sm:max-w-1/2 mx-4 sm:mx-auto my-4 flex flex-col gap-3 rounded-sm pt-4 pb-14">
+                {% for player in players %}
+                    <div class=" border-2 w-full bg-[#F0FFF0]">
+                        <div class="flex items-center max-sm:flex-col justify-center gap-2 sm:gap-0 sm:justify-between py-4 px-0 sm:px-8 w-full">
+                            <p class=" font-favorit text-xl font-semibold text-center ">{{player.name}}</p>
+                            <p class=" font-favorit text-xl text-center">{{player.team}}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+    </div> 
+    <form action="{{url_for('UserDashboard.create_fantasy_team',match_id=match_id)}}" method="post">
+        <input type="hidden" name="players" value="{{players_list_json}}">
+        <input type="hidden" name="captain" value="{{captain}}">
+        <input type="hidden" name="vice_captain" value="{{vice_captain}}"><input type="hidden" name="team_name" value="{{team_name}}">
+        <div class=" w-full fixed bottom-0 left-0 z-50 sm:px-16 py-2 bg-white border-t-2 flex  items-center justify-center sm:justify-end">
+            <div>
+                <input type="submit" value="Enter Contest" class=" text-xl bg-[#5724FF] text-white py-2 px-10 rounded-full border-2 cursor-pointer ">
+            </div>
+        </div>
+    </form>
+</body>
+</html>

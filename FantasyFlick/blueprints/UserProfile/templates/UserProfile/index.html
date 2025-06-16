@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FantasyFlick</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+    <script src="https://kit.fontawesome.com/91953b8a7b.js" crossorigin="anonymous"></script>
+</head>
+<body class=" h-screen w-screen  relative overflow-hidden bg-[#F0FFF0]">
+    <div class=" w-full h-full">
+        <div class="h-full md:h-1/2 w-full  flex flex-col md:flex-row ">
+            <div class=" md:h-full md:w-1/2 p-5 md:p-16">
+                <div>
+                    <a href="{{url_for('UserDashboard.index')}}"><i class="fa-regular fa-circle-left text-5xl "></i></a>
+                </div>
+            </div>
+            <div class=" w-full md:h-full  md:w-1/2 p-5 md:p-16 flex flex-col gap-10 absolute top-0 left-0 translate-y-1/2 md:relative md:translate-none">
+                <div>
+                    <div class=" font-screamerBlack text-6xl">
+                    <h1>{{current_user.username}}</h1>
+                </div>
+                <div class=" font-favorit text-2xl font-semibold">
+                    <p>{{current_user.email}}</p>
+                </div>
+                </div>
+                <div>
+                    <div class=" flex gap-2 border-2 rounded-md p-4 items-center justify-center ">
+                    <i class="fa-solid fa-coins text-2xl"></i>
+                    <p class=" font-favorit text-xl font-semibold">{{current_user.wallet_balance}}</p>
+                </div>
+                <div class="w-full mt-4">
+                    <form action="{{url_for('UserProfile.add_balance')}}" method="post" >
+                        <div class="w-full flex flex-col md:flex-row gap-3">
+                            <div class=" border-1 rounded-sm w-full md:w-1/2" >
+                            <input type="text" name="balance" id="" placeholder="Enter Amount of Coins " class=" w-full h-full px-12 py-4 font-favorit"></div>
+                            <div class="w-full md:w-1/2">
+                            <input type="submit" value="Add Balance" class=" cursor-pointer w-full text-white bg-black py-4 px-12 text-xl rounded-sm" required="required">
+                            </div>
+                        </div>
+                        <div class=" mt-4">
+                        {% with messages = get_flashed_messages()%}
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <p class=" font-bold  text-blue-800">{{message}}</p>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                        </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="h-1/2 w-full border-t-2  bg-cover bg-no-repeat bg-center hidden md:block" style="background-image: url('{{ url_for('static', filename='images/hero.webp') }}');">
+        </div>
+    </div>
+    
+</body>
+</html>

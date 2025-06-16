@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+    <script src="https://kit.fontawesome.com/91953b8a7b.js" crossorigin="anonymous"></script>
+</head>
+<body class="  w-full  relative bg-[#F0FFF0]">
+    <a href="{{url_for('UserDashboard.index')}}"><i class="fa-regular fa-circle-left text-4xl sm:ml-6  my-4 ml-4"></i></a>
+    <div class=" w-full text-center text-4xl  sm:text-7xl font-screamerBlack px-4  md:px-16 py-4 ">
+        <p>LeaderBoard</p>
+    </div>
+    <div class="min-h-screen w-full mx-auto p-4 sm:p-12 space-y-5 sm:space-y-10 bg-cover bg-no-repeat bg-center" style="background-image: url('{{ url_for('static', filename='images/hero.webp') }}');">
+        {% for d in data %}
+            <div class="bg-[#F0FFF0]  flex  sm:flex-row items-center  gap-1 justify-between p-5 sm:p-10 rounded-sm font-favorit shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),_0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)]
+            {% if loop.index == 1 %}
+                h-auto md:h-[100px] font-bold text-3xl sm:text-4xl
+            {% elif loop.index == 2 %}
+                h-auto md:h-[80px] text-2xl sm:text-3xl
+            {% elif loop.index == 3 %}
+                h-auto md:h-[60px] text-xl sm:text-2xl
+            {% else %}
+                h-auto md:h-[40px] text-xl
+            {% endif %}
+            ">
+                <div class=" block 
+                {% if loop.index == 1 %}
+                    text-4xl sm:text-7xl text-[#FFB404]
+                {% elif loop.index == 2 %}
+                    text-3xl sm:text-6xl text-[#BCBEBF]
+                {% elif loop.index == 3 %}
+                    text-2xl sm:text-4xl text-[#CD7F32]
+                {% else %}
+                    hidden
+                {% endif %}
+                ">
+                    <i class="fa-solid fa-trophy"></i>
+                </div>
+                <div class="
+                {% if loop.index > 3 %}
+                    block
+                {% else %}
+                    hidden
+                {% endif %}
+                ">
+                    <p># {{loop.index}}</p>
+                </div>
+                <div>
+                    <h2>{{d.team_name}}</h2>
+                </div>
+                <div>
+                    <p>{{d.user_name}}</p>
+                </div>
+                <div>
+                    <p>{{d.total_points}}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
