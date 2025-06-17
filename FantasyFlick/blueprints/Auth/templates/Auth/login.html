@@ -8,22 +8,22 @@
     <script src="https://kit.fontawesome.com/91953b8a7b.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="   h-screen w-screen relative lg:flex">
-        <div class=" bg-[#DFDFF2] border-r-2 w-full lg:w-1/2 h-full py-5 px-5 sm:py-20 sm:px-10">
+    <div class="   min-h-[100dvh] w-screen relative lg:flex overflow-hidden">
+        <div class=" bg-[#DFDFF2] sm:border-r-2 w-full lg:w-1/2 h-[100dvh] py-5 px-5 sm:py-20 sm:px-10">
             <a href="{{url_for('HomePage.index')}}"><i class="fa-regular fa-circle-left text-3xl sm:ml-6"></i></a>
             <div class=" h-full  sm:px-6 sm:py-12 flex flex-col justify-center sm:block">
                 
-                <h1 class=" font-screamerBlack text-7xl mt-4">Log In</h1>
+                <h1 class=" font-screamerBlack text-5xl sm:text-7xl mt-4">Log In</h1>
                 <form  method="post" class=" font-favorit mt-8 flex flex-col gap-3 sm:gap-6">
                     {{login_form.hidden_tag()}}
                     <div>
-                        <p class=" text-2xl">{{login_form.username.label}}</p>
+                        <p class=" text-xl sm:text-2xl">{{login_form.username.label}}</p>
                         <div class=" border-2 rounded-md mt-2">
                             {{login_form.username(class="w-full px-3 py-4 sm:px-12 focus:outline-none text-xl",placeholder="Enter your Username")}}
                         </div>
                     </div>
                     <div>
-                        <p class=" text-2xl">{{login_form.password.label}}</p>
+                        <p class=" text-xl sm:text-2xl">{{login_form.password.label}}</p>
                         <div class="  border-2 rounded-md mt-2">
                             {{login_form.password(class="w-full px-3 py-4 sm:px-12 focus:outline-none text-xl",placeholder="Enter your Password")}}
                         </div>
@@ -38,7 +38,7 @@
                         {% endwith %}
                     </div>
                     <div>
-                        <button class=" cursor-pointer w-full text-white bg-black py-4 px-12 text-2xl">{{login_form.login(class=" cursor-pointer")}}</button>
+                        <button class=" cursor-pointer w-full text-white bg-black py-4 px-12 text-xl sm:text-2xl">{{login_form.login(class=" cursor-pointer")}}</button>
                     </div>
                     <div class=" w-full text-center">
                         <a href="{{url_for('Auth.signup')}}" class=" hover:underline">Don't have an account? Sign Up</a>
@@ -46,8 +46,8 @@
                 </form>
             </div>
         </div>
-        <div class=" w-1/2 h-full relative">
-            <div class="  absolute inset-0  w-full h-full">
+        <div class=" w-1/2 h-[100dvh] relative hidden sm:block">
+            <div class="  absolute inset-0  w-full h-full ">
                 <video src="{{url_for('static',filename='videos/hero-2.mp4')}}" class="w-full h-full object-cover"  autoplay loop muted></video>
             </div>
         </div>
