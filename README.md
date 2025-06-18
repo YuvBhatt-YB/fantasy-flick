@@ -56,7 +56,7 @@ Everything is styled with **TailwindCSS**, powered by a **Flask**, and the data 
 ## 🎥 Demo
 
 Check out a walkthrough of the app here:  
-[![Fantasy Flick Demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+[![Fantasy Flick Demo](https://img.youtube.com/vi/Kg5U-_UmpaQ/0.jpg)](https://www.youtube.com/watch?v=Kg5U-_UmpaQ)
 
 ---
 
